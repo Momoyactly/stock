@@ -12,7 +12,7 @@ def home():
     respuesta = requests.get("https://api.bitso.com/v3/ticker/?book=btc_mxn").json()
     if respuesta["success"]:
         datos = respuesta["payload"]
-        registro = btc_mxn(last = datos["last"],volume =datos["volume"] ,created_at =datos["created_at"])
+        registro = btc_mxn(last = datos["last"],volume = datos["volume"] ,created_at = datos["created_at"])
         db.session.add(registro)
         db.session.commit()
         print(respuesta)
